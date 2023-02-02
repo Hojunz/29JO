@@ -23,9 +23,10 @@ class GoodsService {
             };
         });
     };
+
     createdGoods = async (name, price, image, stock) => {
         try {
-            
+            await this.goodsRepository.nameCheck(name);
             const createGoodsData = await this.goodsRepository.createGoods(
                 name, price, image, stock
             )
@@ -36,8 +37,36 @@ class GoodsService {
                 stock: createGoodsData.stock
             }
         } catch (error) {
-            console.log(error);
-            return error.Error
+            throw error
+        }
+    };
+
+    deleteGoods = async (goodsId) => {
+        try {
+            const findGoods = await this.goodsRepository.findById(goodsId)
+            console.log('123456',findGoods)
+            if(!findGoods){
+                throw new Error('상품이 없습니다.')
+            }
+            await this.goodsRepository.deleteGoods(goodsId)
+            return
+        } catch (error) {
+            throw error
+        }
+    };
+    updateGoods = async(goodsId, name, price, stock) => {
+        try{
+            await this.goodsRepository.updateGoods(
+                goodsId, name, price, stock
+            );
+            const updateGoods = await this.goodsRepository.findById(goodsId)
+            return {
+                name: updateGoods.name, 
+                price: updateGoods.price, 
+                stock: updateGoods.stock
+            }
+        }catch(error){
+            throw error
         }
     }
 };

@@ -5,7 +5,6 @@ class GoodsController {
     getGoods = async (req, res, next) => {
         try {
             const goodses = await this.goodsService.findAllGoods();
-            console.log(goodses)
             return res.status(200).json({ data: goodses })
         } catch (error) {
             return res.status(400)
@@ -28,8 +27,42 @@ class GoodsController {
             );
             console.log('생성Data', createGoodsData)
             res.status(201).json({ data: createGoodsData })
-        } catch (Error) {
-            return res.status(400).json({ Error: Error.message })
+        } catch (error) {
+            return res.status(400).json({ errorMessage: error.message })
+        }
+    };
+    deleteGoods = async (req, res, next) => {
+        try {
+            const { goodsId } = req.params
+            console.log(goodsId)
+            const deleteGoods = await this.goodsService.deleteGoods(goodsId);
+            console.log('상품 삭제', deleteGoods)
+            // if(deleteGoods === undefined){
+            //     throw new Error('상품이 없습니다.')
+            // }
+            return res.status(201).json({ message: '삭제 성공했습니다.' });
+        } catch (error) {
+            if (error.message === '상품이 없습니다.') {
+                return res.status(404).json({ message: error.message })
+            }
+            return res.status(404).json({ message: '예상치 못한 오류' })
+        }
+    }
+    updateGoods = async (req, res, next) => {
+        try{
+            const { name, price, stock } = req.body
+            const { goodsId } = req.params
+            const updatedGoods = await this.goodsService.updateGoods(
+                goodsId, name, price, stock
+            );
+            console.log('11123141441',updatedGoods)
+            return res.status(203).json({data: updatedGoods})
+        }catch(error){
+            if(error.message === '이미 있는 이름 입니다.'){
+                return res.status(400).json({errorMessage: error.message})
+            }
+            console.log(error)
+            return res.status(404).json({ message: '예상치 못한 오류' })
         }
     }
 }
