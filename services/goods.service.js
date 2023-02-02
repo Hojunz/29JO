@@ -1,4 +1,4 @@
-const GoodsRepository = require('../repositories/goods.repository');
+const GoodsRepository = require('../repository/goods.repository');
 const { Goods } = require('../models')
 
 class GoodsService {
