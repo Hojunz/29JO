@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "0000",
+    "password": "gks1004*",
     "database": "donkey",
     "host": "127.0.0.1",
     "dialect": "mysql",
