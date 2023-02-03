@@ -1,7 +1,8 @@
 const { User } = require("../models");
 
-//내 정보
+
 class MyPageRepository {
+  //내 정보
   myInfo = async(UserId) => {
     const mypage = await User.findAll({
       attribute: [
@@ -13,7 +14,6 @@ class MyPageRepository {
       ],
       where: {id: UserId}
     })
-    console.log(mypage);
     return mypage
   }
 }
