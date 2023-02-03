@@ -6,7 +6,6 @@ const goodsController = new GoodsController();
 
 router.get('/', goodsController.getGoods)
 
-
 router.post('/',goodsController.addGoods)
 router.delete('/:goodsId',goodsController.deleteGoods)
 router.put('/:goodsId',goodsController.updateGoods)

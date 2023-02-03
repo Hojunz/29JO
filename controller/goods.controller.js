@@ -33,13 +33,9 @@ class GoodsController {
     };
     deleteGoods = async (req, res, next) => {
         try {
-            const { goodsId } = req.params
-            console.log(goodsId)
+            const { goodsId } = req.params        
             const deleteGoods = await this.goodsService.deleteGoods(goodsId);
             console.log('상품 삭제', deleteGoods)
-            // if(deleteGoods === undefined){
-            //     throw new Error('상품이 없습니다.')
-            // }
             return res.status(201).json({ message: '삭제 성공했습니다.' });
         } catch (error) {
             if (error.message === '상품이 없습니다.') {
