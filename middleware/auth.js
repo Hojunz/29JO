@@ -2,7 +2,6 @@ const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const express = require("express");
 const { secretKey } = require("../config/secretkey.js");
-
 const { User } = require("../models");
 
 const app = express();
@@ -21,7 +20,7 @@ module.exports = (req, res, next) => {
     const { id } = jwt.verify(cookie, secretKey);
     User.findByPk(id).then((user) => {
       res.locals.user = user;
-      // console.log(res.locals.user)
+      console.log(res.locals.user)
       next();
     });
   } catch (err) {
