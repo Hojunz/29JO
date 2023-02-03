@@ -8,6 +8,17 @@ class AdminRepository {
     })
     return userList
   }
+  //유저 id로 찾기
+  findUserById = async(userId) => {
+    const UserData = await User.findByPk(userId)
+    return UserData
+  }
+  //유저 등급 변경
+  ChangeUser = async(findUser) => {
+    const ChangeUserData = await findUser.save()
+
+    return ChangeUserData
+  }
 }
 
 module.exports = AdminRepository
