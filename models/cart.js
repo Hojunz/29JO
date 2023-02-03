@@ -36,7 +36,10 @@ class Cart extends Sequelize.Model {
       foreignKey: "goodsId",
       targetKey: "id",
     });
-    models.Cart.hasOne(models.Order_Cart, { foreignKey: "cartId" });
+    models.Cart.belongsTo(models.Order, {
+      foreignKey: "orderId",
+      targetKey: "id",
+    });
   }
 }
 

@@ -48,7 +48,7 @@ class Order extends Sequelize.Model {
       foreignKey: "userId",
       targetKey: "id",
     });
-    models.Order.hasMany(models.Order_Cart, {
+    models.Order.hasMany(models.Cart, {
       foreignKey: "orderId",
       sourceKey: "id",
     });
