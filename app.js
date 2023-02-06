@@ -15,6 +15,12 @@ dotenv.config(); // process.env
 //process.env.COOKIE_SECRET있음
 
 const app = express();
+
+const {Server} = require('http') // 소켓소켓
+const socketIo = require('socket.io')
+const http = Server(app)
+const io = socketIo(http)
+
 app.set("port", process.env.PORT || 3000);
 
 app.set("views", path.join(__dirname, "views"));
@@ -61,6 +67,27 @@ app.use((err, req, res, next) => {
   // res.render("error");
 });
 
-app.listen(app.get("port"), () => {
+// 소켓 연결 
+io.on("connection", (sock) => {
+  console.log("새로운 소켓이 연결됐어요!");
+
+  sock.on("BUY", (data) => {
+    const emitData = {
+      nickname: data.nickname,
+      goodsId: data.goodsId,
+      goodsName: data.goodsName,
+      date: new Date().toISOString(),
+    };
+
+    io.emit("BUY_GOODS", emitData);
+  });
+
+  sock.on("disconnect", () => {
+    console.log(sock.id, "연결이 끊어졌어요!");
+  });
+});
+
+
+http.listen(app.get("port"), () => {
   console.log(app.get("port"), "번 포트에서 대기중");
 });

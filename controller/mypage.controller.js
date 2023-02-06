@@ -11,7 +11,7 @@ class MyPageController {
       res.status(200).json({data: myinfo})
     }catch(error) {
       console.log(error)
-    }
+    } 
   }
 }
 
