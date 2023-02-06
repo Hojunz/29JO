@@ -10,20 +10,20 @@ class OrderRepository {
 
     }
     createOrder = async (
-        cartId, userId, receiverName, receiverAddress, receiverPhone, 
+        cartId, userId, receiverName, receiverAddress, receiverPhone,
     ) => {
         const t = await sequelize.transaction()
         try {
             const count = await this.cartModel.findAll({
-                
-                where: {id:cartId},
-                include:[{
+
+                where: { id: cartId },
+                include: [{
                     model: this.goodsModel,
                     attributes: ["price",],
                 }]
             })
-            console.log('2222',count[0].quanitity)
-            console.log('2222',count[0].Good.price)
+            console.log('2222', count[0].quanitity)
+            console.log('2222', count[0].Good.price)
             const total_Price = Number(count[0].quanitity) * Number(count[0].Good.price)
             const findCart = await this.cartModel.findAll({
                 where: { id: cartId },
@@ -42,7 +42,6 @@ class OrderRepository {
                 receiverAddress,
                 receiverPhone,
                 total_Price,
-
             }, { transaction: t })
             await this.cartModel.update(
                 { isDone: 0 },
