@@ -11,7 +11,6 @@ class UserService {
       address,
       phoneNumber,
       type,
-      grade
     )
     return createUserdata
   }

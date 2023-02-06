@@ -27,7 +27,7 @@ class Order extends Sequelize.Model {
         status: {
           type: Sequelize.STRING(30),
           allowNull: false,
-          defaultValue: 0,
+          defaultValue: "주문접수",
         },
       },
       {

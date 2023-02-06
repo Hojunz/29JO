@@ -5,6 +5,8 @@ class CartController {
         const User = res.locals.user;
         const userId = User.id
         try {
+            // cart 중복확인 예외처리 필요
+            // cart 존재확인 예외처리 필요 
             const cart = await this.cartService.userFindCart(userId);
             return res.status(200).json({ data: cart })
         } catch (error) {
@@ -12,6 +14,8 @@ class CartController {
         }
     }
     createCart = async (req, res, next) => {
+        // cart 중복확인 예외처리 필요
+        // cart 존재확인 예외처리 필요 
         const User = res.locals.user;
         const userId = User.id
         const { quanitity, goodsId } = req.body
@@ -23,11 +27,13 @@ class CartController {
         }
     };
     updateCart = async(req,res,next) => {
+        // cart 중복확인 예외처리 필요
+        // cart 존재확인 예외처리 필요 
+        const User = res.locals.user;
+        const userId = User.id
+        const { quanitity, goodsId } = req.body
+        const {cartId} = req.params
         try{
-            const User = res.locals.user;
-            const userId = User.id
-            const { quanitity, goodsId } = req.body
-            const {cartId} = req.params
             const updateCart = await this.cartService.updateCart(
                 cartId, quanitity, userId, goodsId
             )
@@ -38,6 +44,8 @@ class CartController {
         }
     }
     deleteCart = async(req, res, next) => {
+        // cart 중복확인 예외처리 필요
+        // cart 존재확인 예외처리 필요 
         try {
             const {cartId} = req.params
             await this.cartService.deleteCart(cartId)

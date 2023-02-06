@@ -20,7 +20,7 @@ module.exports = (req, res, next) => {
     const { id } = jwt.verify(cookie, secretKey);
     User.findByPk(id).then((user) => {
       res.locals.user = user;
-      console.log(res.locals.user)
+      // console.log(res.locals.user)
       next();
     });
   } catch (err) {

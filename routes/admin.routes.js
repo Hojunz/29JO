@@ -6,7 +6,8 @@ const AdminController = require("../controller/admin.controller");
 const admincontroller = new AdminController()
 const GoodsController = require('../controller/goods.controller')
 const goodsController = new GoodsController();
-
+const OrderController = require('../controller/order.controller')
+const orderController = new OrderController()
 router.use(authMiddleware, (req,res,next) => {
   const User = res.locals.user
   if(User.type !== "1") {
@@ -21,5 +22,5 @@ router.get('/goods', goodsController.getGoods)
 router.post('/goods',goodsController.addGoods)
 router.delete('/goods/:goodsId',goodsController.deleteGoods)
 router.put('/goods/:goodsId',goodsController.updateGoods)
-
+router.put('/order', orderController.updateOrder)
 module.exports = router;

@@ -31,7 +31,7 @@ class User extends Sequelize.Model {
         grade: {
           type: Sequelize.STRING(30),
           allowNull: false,
-          defaultValue: 0,
+          defaultValue: '신규회원',
         },
         type: {
           type: Sequelize.STRING(30),

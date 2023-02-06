@@ -15,7 +15,6 @@ class GoodsRepository {
             const goods = await this.goodsModel.findOne({
                 where: { id }
             });
-            console.log('1aaag', goods)
             return goods;
         } catch (error) {
             return error;

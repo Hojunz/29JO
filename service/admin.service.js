@@ -15,20 +15,20 @@ class AdminService {
 
       if(!findUser) throw new Error("유저가 존재하지 않습니다.")
 
-      if(findUser.grade === "0") {
-        findUser.grade = "1"
+      if(findUser.grade === "신규회원") {
+        findUser.grade = "일반회원"
         await this.adminRepository.ChangeUser(findUser)
 
         return {message: "등급이 변경되었습니다."}
       }
-      if(findUser.grade === "1") {
-        findUser.grade = "2"
+      if(findUser.grade === "일반회원") {
+        findUser.grade = "우수회원"
         await this.adminRepository.ChangeUser(findUser)
 
         return {message: "등급이 변경되었습니다."}
       }
-      if(findUser.grade === "2") {
-        findUser.grade = "3"
+      if(findUser.grade === "우수회원") {
+        findUser.grade = "VIP"
         await this.adminRepository.ChangeUser(findUser)
 
         return {message: "등급이 변경되었습니다."}
