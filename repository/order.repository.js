@@ -22,14 +22,14 @@ class OrderRepository {
                     attributes: ["price",],
                 }]
             })
-            console.log('2222',count[0].quanitity)
-            console.log('2222',count[0].Good.price)
+            // console.log('2222',count[0].quanitity)
+            // console.log('2222',count[0].Good.price)
             const total_Price = Number(count[0].quanitity) * Number(count[0].Good.price)
             const findCart = await this.cartModel.findAll({
                 where: { id: cartId },
                 transaction: t
             })
-            console.log('111', findCart)
+            // console.log('111', findCart)
             if (!findCart.length) {
                 throw new Error('없는 카트입니다.')
             }
@@ -58,6 +58,10 @@ class OrderRepository {
                     transaction: t
                 }
             );
+            await this.goodsModel.update(
+              {stock: sequelize.literal(`stock - ${findCart[0].quanitity}`)},
+              {where: {id: findCart[0].goodsId}, transaction: t}
+            )
             await t.commit()
             return createOrder
         } catch (error) {
