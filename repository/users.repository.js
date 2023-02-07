@@ -11,6 +11,14 @@ class UserRepository {
     const user = await User.findOne({ where: {email}})
     return user
   }
+  // 이메일로 패스워드 찾기
+  findPw = async(email) => {
+    const userPw = await User.findOne({
+      attributes: ['password'],
+      where: {email}
+    })
+    return userPw
+  }
 }
 
 module.exports = UserRepository;

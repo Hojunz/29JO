@@ -13,6 +13,7 @@ const orderController = new OrderController()
 
 router.post("/signup", userscontroller.createUser);
 router.post("/login", userscontroller.loginUser);
+router.get("/findpw", userscontroller.findPW);
 
 router.use(authMiddleware, (req,res,next) => {
   next()
