@@ -1,4 +1,5 @@
 const { User } = require("../models");
+const { Order } = require("../models");
 
 class AdminRepository {
   //유저 목록
@@ -18,6 +19,12 @@ class AdminRepository {
     const ChangeUserData = await findUser.save()
 
     return ChangeUserData
+  }
+  //주문물건 불러오기
+  getOrder = async() => {
+    const OrderData = await Order.findAll({})
+
+    return OrderData
   }
 }
 

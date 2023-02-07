@@ -16,6 +16,7 @@ router.use(authMiddleware, (req,res,next) => {
   next()
 })
 router.get('/', admincontroller.findUser)
+router.get('/orderlist', admincontroller.getOrder)
 router.patch('/:userId', admincontroller.ChageUser)
 router.get('/goods', goodsController.getGoods)
 router.post('/goods',goodsController.addGoods)

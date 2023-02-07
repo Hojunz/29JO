@@ -51,8 +51,17 @@ class UsersController {
     res.clearCookie("x_auth")
     return res.status(200).send({message: "로그아웃 완료"})
   }
-
+  //이메일로 패스워드 찾기
+  findPW = async(req, res, next) => {
+    try{
+      const {email} = req.body
+      const userPw = await this.userService.findPw(email)
+  
+      res.status(200).json({userPw})
+    }catch(error){
+      return res.status(400).json({ errorMessage: error.message })
+    }
+  }
 }
-
 
 module.exports = UsersController;

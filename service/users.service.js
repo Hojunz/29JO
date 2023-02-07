@@ -20,6 +20,15 @@ class UserService {
 
     return login
   }
+  //이메일로 패스워드 찾기
+  findPw = async(email) => {
+    const userPw = await this.userRepository.findPw(email)
+
+    if(!userPw) {
+      return {message: "존재하지 않는 이메일입니다."}
+    }
+    return userPw
+  }
 }
 
 module.exports = UserService;

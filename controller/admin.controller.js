@@ -28,6 +28,16 @@ class AdminController {
        res.status(400).json({ errorMessage: error.message });
     }
   }
+  //주문물건 불러오기
+  getOrder = async(req, res, next) => {
+    try{
+      const orderList = await this.adminService.getOrder()
+
+      res.status(200).json({orderList})
+    } catch (error) {
+      res.status(400).json({ errorMessage: error.message });
+   }
+  }
 }
 
 module.exports = AdminController
