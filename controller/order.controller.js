@@ -5,13 +5,13 @@ class OrderController {
     createOrder = async (req, res, next) => {
         const User = res.locals.user;
         const userId = User.id
-        const { cartId, receiverName, receiverAddress, receiverPhone,total_Price} = req.body
+        const { cartId, receiverName, receiverAddress, receiverPhone} = req.body
         try {
             if(!cartId || !receiverName || !receiverAddress || !receiverPhone){
                 throw new Error('cart정보나 받는사람 정보가 빠져있습니다.')
             }
             const order = await this.orderService.createOrder(
-                cartId, userId, receiverName, receiverAddress, receiverPhone, total_Price
+                cartId, userId, receiverName, receiverAddress, receiverPhone
             );
             return res.status(201).json({ data: order })
         } catch (error) {
