@@ -19,7 +19,7 @@ class OrderRepository {
                 where: { id: cartId },
                 include: [{
                     model: this.goodsModel,
-                    attributes: ["price",],
+                    // attributes: ["price",],
                 }]
             })
             // console.log('2222',count[0].quanitity)
@@ -35,6 +35,12 @@ class OrderRepository {
             }
             if (findCart[0].isDone !== 1) {
                 throw new Error('이미 주문된 카트입니다.')
+            }
+            if(findCart[0].quanitity < 0){
+                throw new Error('주문 수량이 없습니다.')
+            }
+            if((Number(count[0].Good.stock)-Number(findCart[0].quanitity)) <0 ){
+                throw new Error('재고가 부족합니다.')
             }
             const createOrder = await this.orderModel.create({
                 userId,
@@ -72,11 +78,11 @@ class OrderRepository {
         try {
             const showOrder = await this.orderModel.findAll({
                 where: { userId },
-                attributes: ["id", "receiverName", "receiverAddress", "receiverPhone", "total_Price"],
+                attributes: ["id", "receiverName", "receiverAddress", "receiverPhone", "total_Price",'status'],
                 include: [
                     {
                         model: this.cartModel,
-                        attributes: ["quanitity", "isDone", "updatedAt",],
+                        attributes: ["quanitity", "updatedAt",],
                         include: [
                             {
                                 model: this.goodsModel,
