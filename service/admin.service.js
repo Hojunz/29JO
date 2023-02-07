@@ -39,6 +39,12 @@ class AdminService {
       return { errormessage: "변경 오류" };
     }
   }
+  // 주문물건 불러오기
+  getOrder = async() => {
+    const orderGoods = await this.adminRepository.getOrder()
+
+    return orderGoods
+  }
 }
 
 module.exports = AdminService
