@@ -36,10 +36,7 @@ class OrderRepository {
             if (findCart[0].isDone !== 1) {
                 throw new Error('이미 주문된 카트입니다.')
             }
-            if(findCart[0].quanitity < 0){
-                throw new Error('주문 수량이 없습니다.')
-            }
-            if((Number(count[0].Good.stock)-Number(findCart[0].quanitity)) <0 ){
+            if((Number(count[0].Good.stock)- Number(findCart[0].quanitity)) <0 ){
                 throw new Error('재고가 부족합니다.')
             }
             const createOrder = await this.orderModel.create({
