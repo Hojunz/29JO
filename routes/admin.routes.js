@@ -15,12 +15,11 @@ router.use(authMiddleware, (req,res,next) => {
   }
   next()
 })
-
 router.get('/', admincontroller.findUser)
 router.patch('/:userId', admincontroller.ChageUser)
 router.get('/goods', goodsController.getGoods)
 router.post('/goods',goodsController.addGoods)
-router.delete('/goods/:goodsId',goodsController.deleteGoods)
 router.put('/goods/:goodsId',goodsController.updateGoods)
+router.delete('/goods/:goodsId',goodsController.deleteGoods)
 router.put('/order', orderController.updateOrder)
 module.exports = router;
