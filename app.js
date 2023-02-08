@@ -19,6 +19,7 @@ app.set("port", process.env.PORT || 3000);
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+app.use(express.static(`${__dirname}/public`));
 
 sequelize
   .sync({ force: false })
@@ -55,9 +56,9 @@ app.use((req, res, next) => {
 });
 app.use((err, req, res, next) => {
   res.locals.message = err.message;
-  console.log(res.locals.message)
+  console.log(res.locals.message);
   res.locals.error = process.env.NODE_ENV !== "production" ? err : {}; //에러로그 서비스에 넘김
-  res.status(err.status || 501).json({message:'1111'});
+  res.status(err.status || 501).json({ message: "1111" });
   // res.render("error");
 });
 
