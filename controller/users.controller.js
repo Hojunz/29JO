@@ -10,9 +10,8 @@ class UsersController {
   createUser = async (req, res, next) => {
     try {
       const {email, nickname, password, confirmPassword, address, phoneNumber, type} = req.body
-
       if(password !== confirmPassword) {
-        res.status(400).json({message: "비밀번호가 일치하지 않습니다."})
+        return res.status(400).json({message: "비밀번호가 일치하지 않습니다."})
       }
       const user = await this.userService.createUser(email, nickname, password, address, phoneNumber, type)
       res.status(201).json({message: "회원가입 성공"})
