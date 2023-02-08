@@ -16,7 +16,7 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="../public/css/goodsdetail.css" />
+    <link rel="stylesheet" href="/css/goodsdetail.css" />
     <title>detail</title>
   </head>
   <body>
@@ -40,30 +40,30 @@
       </div>
       <div class="right">
         <div class="top">
-          <h1>Team Rainbow Unicorn</h1>
+          <h1>상품1</h1>
           <p>details</p>
           <dl>
             <dt>판매가격</dt>
-            <dd class="price">$25</dd>
+            <dd class="price">10000</dd>
             <dt>원산지</dt>
             <dd>대한민국</dd>
           </dl>
           <div class="number">
-            <p class="order-name">Team Rainbow Unicorn</p>
+            <p class="order-name">상품1</p>
             <div class="order-number">
               <input type="number" name="num" id="num" min="1" value="1">
-              <span class="number-price">$25</span>
+              <span class="number-price">10000</span>
             </div>
           </div>
           <div class="total-price">
           <p>총 상품금액</p>
-          <p class="result-price">$25</p>
+          <p class="result-price">10000</p>
           </div>
         </div>
     
         <div class="bottom">
           <button type="button" id="order-btn">주문하기</button>
-          <button type="button" id="cart-btn">장바구니</button>
+          <button type="button" id="cart-btn" onclick="addcart()">장바구니</button>
           <button type="button" id="like-btn">찜하기</button>
         </div>
       </div>
@@ -73,5 +73,6 @@
         <a href="" class="white-text" target="_blank">29jo</a>.
       </div>
     </footer>
+    <script src="/js/goodsdetail.js"></script>
   </body>
 </html>

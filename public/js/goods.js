@@ -11,8 +11,9 @@ $(document).ready(function () {
       for (let i = 0; i < rows.length; i++) {
         let name = rows[i].name;
         let price = rows[i].price;
+        let goodId = rows[i].id;
 
-        let temp_html = `<li>
+        let temp_html = `<li onclick="location.href='/api/good/${goodId}'">
                             <div class="details">
                               <h2>${name}</h2>
                               <p class="price">${price}</p>
