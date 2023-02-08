@@ -1,0 +1,125 @@
+@import url("./index.css");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700&display=swap");
+
+#order-wrap h1,
+#order-wrap p,
+#order-wrap dt,
+#order-wrap dd,
+#order-wrap span,
+#order-wrap input,
+#order-wrap button {
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: normal;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+#order-wrap input,
+#order-wrap button {
+  cursor: pointer;
+  background: none;
+  border: 0;
+}
+
+#order-wrap {
+  width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+}
+#order-wrap .left {
+  width: 500px;
+}
+#order-wrap .left img {
+  width: 100%;
+}
+#order-wrap .right {
+  width: calc(100% - 550px);
+}
+#order-wrap .right .top h1 {
+  font-size: 1.2rem;
+  padding: 20px 0;
+}
+#order-wrap .right .top > p:nth-child(2) {
+  color: #aaa;
+  margin: 0 0 10px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dadada;
+}
+#order-wrap .right .top dl {
+  display: flex;
+  flex-flow: row wrap;
+}
+#order-wrap .right .top dl dt {
+  width: 30%;
+}
+#order-wrap .right .top dl dd {
+  width: 70%;
+}
+#order-wrap .right .top dl dt,
+#order-wrap .right .top dl dd {
+  padding: 10px 0;
+}
+#order-wrap .right .top dl dd.price {
+  font-weight: 700;
+}
+#order-wrap .right .top .number {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  margin: 10px 0;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+}
+#order-wrap .right .top .number .order-name {
+  margin: 0;
+  color: black;
+}
+#order-wrap .right .top .number .order-number input {
+  background: #fff;
+  width: 50px;
+  padding: 5px;
+  border: 1px solid #ddd;
+}
+#order-wrap .right .top .total-price {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+#order-wrap .right .top .total-price p:nth-child(1) {
+  margin: 0;
+  color: black;
+}
+#order-wrap .right .top .total-price .result-price {
+  color: #cc0202;
+  font-size: 1.2rem;
+}
+#order-wrap .right .bottom {
+  text-align: right;
+  padding: 20px 0;
+}
+#order-wrap .right .bottom button {
+  padding: 15px 0;
+}
+#order-wrap .right .bottom #order-btn {
+  width: 150px;
+  background: #cc0202;
+  color: #fff;
+}
+#order-wrap .right .bottom #cart-btn {
+  width: 120px;
+  background: #a9a9a9;
+  color: #fff;
+}
+#order-wrap .right .bottom #like-btn {
+  width: 100px;
+  background: #ddd;
+}
+
+footer {
+  bottom: -9vh;
+}
